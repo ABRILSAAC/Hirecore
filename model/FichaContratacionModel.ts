@@ -6,14 +6,14 @@ import { HistorialCambiosModel } from "./HistorialCambiosModel";
 export class FichaContratacionModel {
     private etapa: IEtapaState;
     private candidato: CandidatoModel;
-    private empleado: EmpleadoModel;
+    private reclutador: EmpleadoModel;
     private cargo: String;
     private historial: HistorialCambiosModel;
 
-    public constructor(etapa: IEtapaState, candidato: CandidatoModel, empleado: EmpleadoModel, cargo: String) {
+public constructor(etapa: IEtapaState, candidato: CandidatoModel, reclutador: EmpleadoModel, cargo: String) {
         this.etapa = etapa;
         this.candidato = candidato;
-        this.empleado = empleado;
+        this.reclutador = reclutador;
         this.cargo = cargo;
     }
 
@@ -30,7 +30,7 @@ export class FichaContratacionModel {
     }
 
     public getReclutador(): EmpleadoModel {
-        return this.empleado;
+        return this.reclutador;
     }
     public getCargo(): String {
         return this.cargo;
