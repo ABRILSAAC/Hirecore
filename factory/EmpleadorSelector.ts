@@ -1,17 +1,17 @@
 import { EmpleadoModel } from "../model/EmpleadoModel";
 
 export class EmpleadorSelector {
-    private empleados: Map<String, EmpleadoModel> = new Map<String, EmpleadoModel>();
+    private readonly empleados: Map<string, EmpleadoModel> = new Map<string, EmpleadoModel>();
 
-    public registrar(id: String, empleado: EmpleadoModel): void {
+    public registrar(id: string, empleado: EmpleadoModel): void {
         this.empleados.set(id, empleado);
     }
 
-    public obtenerPorId(id: String): EmpleadoModel | undefined {
+    public obtenerPorId(id: string): EmpleadoModel | undefined {
         return this.empleados.get(id);
     }
 
-    public ids(): Set<String> {
+    public ids(): Set<string> {
         return new Set(this.empleados.keys());
     }
 }

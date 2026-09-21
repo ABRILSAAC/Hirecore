@@ -3,11 +3,11 @@ import { FichaContratacionModel } from "../model/FichaContratacionModel";
 import { IPermisosPolicy } from "./IPermisosPolicy";
 
 export class CandidatoPolicy implements IPermisosPolicy {
-    private camposVisibles: Set<String>;
+    private readonly camposVisibles: Set<string>;
 
     public constructor(ficha: FichaContratacionModel, candidato: CandidatoModel) {
         const esSuficha = ficha.getCandidato() == candidato; 
-        this.camposVisibles = esSuficha ? new Set<String>(["Nombre", "Apellidos", "Email", "FechaNacimiento", "Profesion", "Etapa", "Cargo"]) : new Set<String>();
+        this.camposVisibles = esSuficha ? new Set<string>(["Nombre", "Apellidos", "Email", "FechaNacimiento", "Profesion", "Etapa", "Cargo"]) : new Set<string>();
     }
 
     public puedeLeer(campo: string): boolean {

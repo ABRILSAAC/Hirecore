@@ -1,16 +1,16 @@
-import { IEtapaState } from "../state/IEtapaState";
+import { IEtapaState } from "../State/Interface/IEtapaState";
 import { CandidatoModel } from "./CandidatoModel";
 import { EmpleadoModel } from "./EmpleadoModel";
 import { HistorialCambiosModel } from "./HistorialCambiosModel";
 
 export class FichaContratacionModel {
     private etapa: IEtapaState;
-    private candidato: CandidatoModel;
-    private reclutador: EmpleadoModel;
-    private cargo: String;
-    private historial: HistorialCambiosModel;
+    private readonly candidato: CandidatoModel;
+    private readonly reclutador: EmpleadoModel;
+    private readonly cargo: string;
+    private readonly historial: HistorialCambiosModel;
 
-public constructor(etapa: IEtapaState, candidato: CandidatoModel, reclutador: EmpleadoModel, cargo: String) {
+public constructor(etapa: IEtapaState, candidato: CandidatoModel, reclutador: EmpleadoModel, cargo: string) {
         this.etapa = etapa;
         this.candidato = candidato;
         this.reclutador = reclutador;
@@ -32,7 +32,7 @@ public constructor(etapa: IEtapaState, candidato: CandidatoModel, reclutador: Em
     public getReclutador(): EmpleadoModel {
         return this.reclutador;
     }
-    public getCargo(): String {
+    public getCargo(): string {
         return this.cargo;
     }
 

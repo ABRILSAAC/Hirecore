@@ -1,11 +1,11 @@
 export class CandidatoModel {
-    private nombre: String;
-    private apellidos: String;
-    private email: String;
-    private fechaNacimiento: Date;
-    private profesion: String;
+    private readonly nombre: string;
+    private readonly apellidos: string;
+    private readonly email: string;
+    private readonly fechaNacimiento: Date;
+    private readonly profesion: string;
 
-    public constructor(nombre: String, apellidos: String, email: String, fechaNacimiento: Date, profesion: String) {
+    public constructor(nombre: string, apellidos: string, email: string, fechaNacimiento: Date, profesion: string) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
@@ -13,11 +13,11 @@ export class CandidatoModel {
         this.profesion = profesion;
     }
 
-    public getNombreCompleto(): String {
+    public getNombreCompleto(): string {
         return this.nombre + " " + this.apellidos;
     }   
 
-    public getEmail(): String {
+    public getEmail(): string {
         return this.email;
     }
 
@@ -25,7 +25,7 @@ export class CandidatoModel {
         return this.fechaNacimiento;
     }
 
-    public getProfesion(): String {
+    public getProfesion(): string {
         return this.profesion;
     }
 }

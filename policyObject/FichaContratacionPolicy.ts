@@ -1,14 +1,15 @@
 import { EmpleadoModel } from "../model/EmpleadoModel";
-import { IRolStrategy } from "../strategy/IRolStrategy";
-import { IEtapaState } from "../state/IEtapaState";
+import { IRolStrategy } from "../Strategy/Interface/IRolStrategy";
+import { IEtapaState } from "../State/Interface/IEtapaState";
 import { EventManager } from "../observer/EventManager";
 import { FichaContratacionModel } from "../model/FichaContratacionModel";
+import { IPermisosPolicy } from "./IPermisosPolicy";
 
 export class FichaContratacionPolicy implements IPermisosPolicy {
-    private actor: EmpleadoModel;
-    private rol: IRolStrategy;
+    private readonly actor: EmpleadoModel;
+    private readonly rol: IRolStrategy;
     private etapa: IEtapaState;
-    private eventManager: EventManager;
+    private readonly eventManager: EventManager;
 
     public constructor(actor: EmpleadoModel, etapa: IEtapaState, eventManager: EventManager) {
         this.actor = actor;
@@ -18,11 +19,11 @@ export class FichaContratacionPolicy implements IPermisosPolicy {
     }
 
     public puedeLeer(campo: string): boolean {
-        return this.rol.lectura().has(campo) && this.etapa.permisosLectura.get(campo);
+        return this.rol.lectura().has(campo) && this.etapa.permisosLectura().has(campo);
     }
 
     public puedeEscribir(campo: string): boolean {
-        return this.rol.escritura().has(campo) && this.etapa.permisosEscritura.get(campo);
+        return this.rol.escritura().has(campo) && this.etapa.permisosEscritura().has(campo);
     }
 
     public avanzarEtapa(ficha: FichaContratacionModel): void {
@@ -33,7 +34,7 @@ export class FichaContratacionPolicy implements IPermisosPolicy {
         this.cambiarEtapa(ficha, ficha.getEtapa().avanzar(), "CANDIDATO_RECHAZADO");
     }
 
-    public cambiarEtapa(ficha: FichaContratacionModel, nueva: IEtapaState, evento: String): void {
+    public cambiarEtapa(ficha: FichaContratacionModel, nueva: IEtapaState, evento: string): void {
         if (!this.puedeEscribir("Etapa")) {
             throw new Error("No se puede modificar la etapa desde '" + this.etapa.nombre() + "' con este rol.");
         }

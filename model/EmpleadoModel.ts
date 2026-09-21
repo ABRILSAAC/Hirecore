@@ -1,13 +1,13 @@
-import { IRolStrategy } from "../strategy/IRolStrategy";
+import { IRolStrategy } from "../Strategy/Interface/IRolStrategy";
 
 export class EmpleadoModel {
-    private nombre: String;
-    private apellidos: String;
-    private email: String;
-    private cargo: String;
-    private rol: IRolStrategy
+    private readonly nombre: string;
+    private readonly apellidos: string;
+    private readonly email: string;
+    private readonly cargo: string;
+    private readonly rol: IRolStrategy
 
-    public constructor(nombre: String, apellidos: String, email: String, cargo: String, rol: IRolStrategy) {
+    public constructor(nombre: string, apellidos: string, email: string, cargo: string, rol: IRolStrategy) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
@@ -15,15 +15,15 @@ export class EmpleadoModel {
         this.rol = rol;
     }
 
-    public getNombreCompleto(): String {
+    public getNombreCompleto(): string {
         return this.nombre + " " + this.apellidos;
     }
 
-    public getEmail(): String {
+    public getEmail(): string {
         return this.email;
     }
 
-    public getCargo(): String {
+    public getCargo(): string {
         return this.cargo;
     }
 

@@ -1,21 +1,21 @@
 import { CandidatoModel } from "../model/CandidatoModel";
 
 export class CandidatoSelector {
-    private candidatos: Map<String, CandidatoModel> = new Map<String, CandidatoModel>();
+    private readonly candidatos: Map<string, CandidatoModel> = new Map<string, CandidatoModel>();
 
-    public registrar(id: String, candidato: CandidatoModel): void {
+    public registrar(id: string, candidato: CandidatoModel): void {
         this.candidatos.set(id, candidato);
     }
 
-    public esCandidato(id: String): boolean {
+    public esCandidato(id: string): boolean {
         return this.candidatos.has(id);
     }
 
-    public obtenerPorId(id: String): CandidatoModel | undefined {
+    public obtenerPorId(id: string): CandidatoModel | undefined {
         return this.candidatos.get(id);
     }
 
-    public ids(): Set<String> {
+    public ids(): Set<string> {
         return new Set(this.candidatos.keys());
     }
 }
