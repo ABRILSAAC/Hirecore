@@ -1,9 +1,9 @@
-import { EmpleadoModel } from "../model/EmpleadoModel";
-import { IRolStrategy } from "../Strategy/Interface/IRolStrategy";
-import { IEtapaState } from "../State/Interface/IEtapaState";
-import { EventManager } from "../observer/EventManager";
-import { FichaContratacionModel } from "../model/FichaContratacionModel";
-import { IPermisosPolicy } from "./IPermisosPolicy";
+import { EmpleadoModel } from "../model/EmpleadoModel.js";
+import { IRolStrategy } from "../Strategy/Interface/IRolStrategy.js";
+import { IEtapaState } from "../State/Interface/IEtapaState.js";
+import { EventManager } from "../observer/EventManager.js";
+import { FichaContratacionModel } from "../model/FichaContratacionModel.js";
+import { IPermisosPolicy } from "./IPermisosPolicy.js";
 
 export class FichaContratacionPolicy implements IPermisosPolicy {
     private readonly actor: EmpleadoModel;
@@ -31,7 +31,7 @@ export class FichaContratacionPolicy implements IPermisosPolicy {
     }
 
     public rechazarEtapa(ficha: FichaContratacionModel): void {
-        this.cambiarEtapa(ficha, ficha.getEtapa().avanzar(), "CANDIDATO_RECHAZADO");
+        this.cambiarEtapa(ficha, ficha.getEtapa().rechazar(), "CANDIDATO_RECHAZADO");
     }
 
     public cambiarEtapa(ficha: FichaContratacionModel, nueva: IEtapaState, evento: string): void {
