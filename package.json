@@ -1,0 +1,13 @@
+{
+    "name": "hirecore",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "description": "Ejercicio 2 de Arquitectura de Software",
+    "scripts": {
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "typescript": "^7.0.0"
+    }
+}
