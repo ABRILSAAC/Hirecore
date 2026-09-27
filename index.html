@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>HireCore</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 720px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            color: #222;
+        }
+        h1 {
+            margin-bottom: 0.25rem;
+        }
+        .encabezado {
+            color: #555;
+            margin-top: 0;
+        }
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .panel {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .panel:empty {
+            display: none;
+        }
+        .panel h3 {
+            width: 100%;
+            margin: 0 0 0.5rem 0;
+        }
+        .listado ol {
+            padding-left: 1.25rem;
+        }
+        .registro {
+            background: #111;
+            color: #0f0;
+            padding: 0.75rem;
+            border-radius: 6px;
+            height: 10rem;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="module" src="./dist/Main.js"></script>
+</body>
+</html>
