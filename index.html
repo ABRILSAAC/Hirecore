@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: system-ui, sans-serif;
-            max-width: 720px;
+            max-width: 80%;
             margin: 2rem auto;
             padding: 0 1rem;
             color: #222;
@@ -41,8 +41,67 @@
             width: 100%;
             margin: 0 0 0.5rem 0;
         }
-        .listado ol {
-            padding-left: 1.25rem;
+        .fichas {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .fichas li {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+        }
+        .fichas li p {
+            margin: 0 0 0.25rem 0;
+        }
+        .etapa-path {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0.25rem 0 0 0;
+        }
+        .etapa-paso {
+            display: flex;
+            align-items: center;
+        }
+        .etapa-paso:not(:last-child)::after {
+            content: "→";
+            margin: 0 0.35rem;
+            color: #aaa;
+        }
+        .etapa-pill {
+            padding: 0.15rem 0.55rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            white-space: nowrap;
+        }
+        .etapa-hecha {
+            background: #2e7d32;
+            color: #fff;
+        }
+        .etapa-actual {
+            background: #fff;
+            color: #1b5e20;
+            border: 2px solid #2e7d32;
+            font-weight: 600;
+        }
+        .etapa-pendiente {
+            background: #e0e0e0;
+            color: #595959;
+        }
+        .etapa-descartada {
+            background: #eee;
+            color: #595959;
+            text-decoration: line-through;
+        }
+        .etapa-rechazada {
+            background: #c62828;
+            color: #fff;
         }
         .registro {
             background: #111;
