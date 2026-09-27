@@ -9,6 +9,7 @@ lectura(): Set<string>
             "Nombre",
             "Apellidos",
             "Cargo",
+            "Etapa"
             ]);
 
         return campos;
