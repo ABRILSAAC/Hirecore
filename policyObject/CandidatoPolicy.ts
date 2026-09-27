@@ -1,6 +1,6 @@
-import { CandidatoModel } from "../model/CandidatoModel";
-import { FichaContratacionModel } from "../model/FichaContratacionModel";
-import { IPermisosPolicy } from "./IPermisosPolicy";
+import { CandidatoModel } from "../model/CandidatoModel.js";
+import { FichaContratacionModel } from "../model/FichaContratacionModel.js";
+import { IPermisosPolicy } from "./IPermisosPolicy.js";
 
 export class CandidatoPolicy implements IPermisosPolicy {
     private readonly camposVisibles: Set<string>;

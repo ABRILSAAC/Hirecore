@@ -1,5 +1,5 @@
-import { IEtapaAbstractFactory } from "../factory/Interface/IEtapaAbstractFactory";
-import { IEtapaState } from "./Interface/IEtapaState";
+import { IEtapaAbstractFactory } from "../factory/Interface/IEtapaAbstractFactory.js";
+import { IEtapaState } from "./Interface/IEtapaState.js";
 
 
 export class EstadoEntrevista implements IEtapaState

@@ -1,14 +1,14 @@
-import { IEtapaState } from "../State/Interface/IEtapaState";
-import { CandidatoModel } from "./CandidatoModel";
-import { EmpleadoModel } from "./EmpleadoModel";
-import { HistorialCambiosModel } from "./HistorialCambiosModel";
+import { IEtapaState } from "../State/Interface/IEtapaState.js";
+import { CandidatoModel } from "./CandidatoModel.js";
+import { EmpleadoModel } from "./EmpleadoModel.js";
+import { HistorialCambiosModel } from "./HistorialCambiosModel.js";
 
 export class FichaContratacionModel {
     private etapa: IEtapaState;
     private readonly candidato: CandidatoModel;
     private readonly reclutador: EmpleadoModel;
     private readonly cargo: string;
-    private readonly historial: HistorialCambiosModel;
+    private readonly historial: HistorialCambiosModel = new HistorialCambiosModel;
 
 public constructor(etapa: IEtapaState, candidato: CandidatoModel, reclutador: EmpleadoModel, cargo: string) {
         this.etapa = etapa;

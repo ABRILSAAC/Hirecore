@@ -1,4 +1,4 @@
-import { CandidatoModel } from "../model/CandidatoModel";
+import { CandidatoModel } from "../model/CandidatoModel.js";
 
 export class CandidatoSelector {
     private readonly candidatos: Map<string, CandidatoModel> = new Map<string, CandidatoModel>();

@@ -1,4 +1,4 @@
-import { ITransicionCommand } from "../command/ITransicionCommand";
+import { ITransicionCommand } from "../command/ITransicionCommand.js";
 
 export class HistorialCambiosModel {
     private pila: ITransicionCommand[] = [];

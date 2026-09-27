@@ -1,4 +1,4 @@
-import { IEtapaState } from "../../State/Interface/IEtapaState";
+import { IEtapaState } from "../../State/Interface/IEtapaState.js";
 
 export interface IEtapaAbstractFactory
 {

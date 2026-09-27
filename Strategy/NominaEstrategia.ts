@@ -1,4 +1,4 @@
-import { IRolStrategy } from "./Interface/IRolStrategy";
+import { IRolStrategy } from "./Interface/IRolStrategy.js";
 
 export class NominaEstrategia implements IRolStrategy
 {

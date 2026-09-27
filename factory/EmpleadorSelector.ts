@@ -1,4 +1,4 @@
-import { EmpleadoModel } from "../model/EmpleadoModel";
+import { EmpleadoModel } from "../model/EmpleadoModel.js";
 
 export class EmpleadorSelector {
     private readonly empleados: Map<string, EmpleadoModel> = new Map<string, EmpleadoModel>();

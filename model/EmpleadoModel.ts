@@ -1,4 +1,4 @@
-import { IRolStrategy } from "../Strategy/Interface/IRolStrategy";
+import { IRolStrategy } from "../Strategy/Interface/IRolStrategy.js";
 
 export class EmpleadoModel {
     private readonly nombre: string;
