@@ -1,12 +1,12 @@
-import { EstadoAplicado } from "../State/EstadoAplicado";
-import { EstadoContratado } from "../State/EstadoContratado";
-import { EstadoEntrevista } from "../State/EstadoEntrevista";
-import { EstadoOferta } from "../State/EstadoOferta";
-import { EstadoPruebaTecnica } from "../State/EstadoPruebaTecnica";
-import { EstadoRechazado } from "../State/EstadoRechazado";
-import { EstadoValidacionRefencias } from "../State/EstadoValidacionRefencias";
-import { IEtapaState } from "../State/Interface/IEtapaState";
-import { IEtapaAbstractFactory } from "./Interface/IEtapaAbstractFactory";
+import { EstadoAplicado } from "../State/EstadoAplicado.js";
+import { EstadoContratado } from "../State/EstadoContratado.js";
+import { EstadoEntrevista } from "../State/EstadoEntrevista.js";
+import { EstadoOferta } from "../State/EstadoOferta.js";
+import { EstadoPruebaTecnica } from "../State/EstadoPruebaTecnica.js";
+import { EstadoRechazado } from "../State/EstadoRechazado.js";
+import { EstadoValidacionReferencias } from "../State/EstadoValidacionReferencias.js";
+import { IEtapaState } from "../State/Interface/IEtapaState.js";
+import { IEtapaAbstractFactory } from "./Interface/IEtapaAbstractFactory.js";
 
 export class EtapaFactoryConcreta implements IEtapaAbstractFactory
 {
@@ -26,7 +26,7 @@ export class EtapaFactoryConcreta implements IEtapaAbstractFactory
     }
     validacionReferencias(): IEtapaState
     {
-        return new EstadoValidacionRefencias(this);
+        return new EstadoValidacionReferencias(this);
     }
     oferta(): IEtapaState
     {
