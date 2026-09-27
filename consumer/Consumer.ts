@@ -55,6 +55,10 @@ export class Consumer {
         return this.empleados.obtenerPorId(id);
     }
 
+    public buscarCandidato(id: string): CandidatoModel | undefined {
+        return this.candidatos.obtenerPorId(id);
+    }
+
     public idsEmpleados(): Set<string> {
         return this.empleados.ids();
     }
