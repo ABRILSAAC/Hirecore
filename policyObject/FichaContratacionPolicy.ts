@@ -30,7 +30,7 @@ export class FichaContratacionPolicy implements IPermisosPolicy {
         this.cambiarEtapa(ficha, ficha.getEtapa().avanzar(), "ETAPA_AVANZADA");
     }
 
-    public rechazarEtapa(ficha: FichaContratacionModel): void {
+    public rechazarCandidato(ficha: FichaContratacionModel): void {
         this.cambiarEtapa(ficha, ficha.getEtapa().rechazar(), "CANDIDATO_RECHAZADO");
     }
 
