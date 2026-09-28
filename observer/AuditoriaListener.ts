@@ -1,9 +1,9 @@
 // Las rutas de importación son aproximadas según la estructura original de los paquetes
-import { EmpleadoModel } from '../model/EmpleadoModel';
-import { FichaContratacionModel } from '../model/FichaContratacionModel';
-import { RegistroAuditoriaModel } from '../model/RegistroAuditoriaModel';
-import { IEtapaState } from '../state/IEtapaState';
-import { IEventListener } from './IEventListener';
+import { EmpleadoModel } from '../model/EmpleadoModel.js';
+import { FichaContratacionModel } from '../model/FichaContratacionModel.js';
+import { RegistroAuditoriaModel } from '../model/RegistroAuditoriaModel.js';
+import { IEtapaState } from '../State/Interface/IEtapaState.js';
+import { IEventListener } from './IEventListener.js';
 
 // Listener del Observer dedicado a dejar constancia de cada cambio: quién, cuándo, dónde y cuál fue el cambio
 export class AuditoriaListener implements IEventListener {
