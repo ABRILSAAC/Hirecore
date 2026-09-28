@@ -1,8 +1,8 @@
 // Las rutas de importación son aproximadas según la estructura original de los paquetes
-import { FichaContratacionModel } from '../model/FichaContratacionModel';
-import { FichaContratacionPolicy } from '../policyObject/FichaContratacionPolicy';
-import { IEtapaState } from '../state/IEtapaState';
-import { ITransicionCommand } from './ITransicionCommand';
+import { FichaContratacionModel } from '../model/FichaContratacionModel.js';
+import { FichaContratacionPolicy } from '../policyObject/FichaContratacionPolicy.js';
+import { IEtapaState } from '../State/Interface/IEtapaState.js';
+import { ITransicionCommand } from './ITransicionCommand.js';
 
 export class RechazarEtapaCommand implements ITransicionCommand {
     private etapaAnterior: IEtapaState | null = null;

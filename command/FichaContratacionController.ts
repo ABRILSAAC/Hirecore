@@ -1,10 +1,10 @@
-import { EmpleadoModel } from '../model/EmpleadoModel';
-import { FichaContratacionModel } from '../model/FichaContratacionModel';
-import { EventManager } from '../observer/EventManager';
-import { FichaContratacionPolicy } from '../policyObject/FichaContratacionPolicy';
-import { IEtapaState } from '../state/IEtapaState';
-import { AvanzarEtapaCommand } from './AvanzarEtapaCommand';
-import { RechazarEtapaCommand } from './RechazarEtapaCommand';
+import { EmpleadoModel } from '../model/EmpleadoModel.js';
+import { FichaContratacionModel } from '../model/FichaContratacionModel.js';
+import { EventManager } from '../observer/EventManager.js';
+import { FichaContratacionPolicy } from '../policyObject/FichaContratacionPolicy.js';
+import { IEtapaState } from '../State/Interface/IEtapaState.js';
+import { AvanzarEtapaCommand } from './AvanzarEtapaCommand.js';
+import { RechazarEtapaCommand } from './RechazarEtapaCommand.js';
 
 export class FichaContratacionController {
     constructor(private readonly eventManager: EventManager) {}
