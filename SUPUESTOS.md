@@ -4,8 +4,8 @@ Diagrama de referencia: [ver en excalidraw.com](https://excalidraw.com/#room=b32
 
 ## Supuestos generales
 
-- El área de RRHH es quien controla los estados.
-- El gerente de contratación es quien controla la gestión de cambios (revertir cambios, tomar decisiones).
+- El área de RRHH, el reclutador y el gerente son quienes controlan los estados.
+- El gerente de contratación y RRHH es quien controla la gestión de cambios (revertir cambios).
 - El flujo del estado de contratación es un proceso lineal, es decir, debe existir una entrevista antes de una prueba técnica.
 - La contratación tendrá los siguientes atributos: `NombreCandidato`, `CorreoCandidato`, `EtapaActual`, `DecisiónFinal`, `Reclutador`, `FechaInicio`.
 - El software ATS será el encargado de generar un seguimiento de contratación para las hojas de vida de los candidatos inscritos.
