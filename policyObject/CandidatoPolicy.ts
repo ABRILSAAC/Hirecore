@@ -7,7 +7,7 @@ export class CandidatoPolicy implements IPermisosPolicy {
 
     public constructor(ficha: FichaContratacionModel, candidato: CandidatoModel) {
         const esSuficha = ficha.getCandidato() == candidato; 
-        this.camposVisibles = esSuficha ? new Set<string>(["Nombre", "Apellidos", "Email", "FechaNacimiento", "Profesion", "Etapa", "Cargo"]) : new Set<string>();
+        this.camposVisibles = esSuficha ? new Set<string>(["Nombre", "Apellidos", "Email", "FechaNacimiento", "Profesion", "Etapa", "Cargo", "Reclutador"]) : new Set<string>();
     }
 
     public puedeLeer(campo: string): boolean {
