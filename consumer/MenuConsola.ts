@@ -245,9 +245,9 @@ export class MenuConsola {
         this.panel.innerHTML = "";
         this.panel.append(crear("h3", { texto: "Crear ficha" }));
 
-        const idsCandidatos = [...this.consumer.idsCandidatos()];
+        const idsCandidatos = [...this.consumer.idsCandidatos()].filter((id) => !this.consumer.tieneFicha(id));
         if (idsCandidatos.length === 0) {
-            this.panel.append(crear("p", { texto: "No hay candidatos registrados" }));
+            this.panel.append(crear("p", { texto: "No hay candidatos disponibles (todos ya tienen una ficha)" }));
             return;
         }
 

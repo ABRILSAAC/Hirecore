@@ -89,10 +89,22 @@ export class Consumer {
     }
 
     // Operaciones sobre fichas
+    private buscarFichaDe(candidato: CandidatoModel): FichaContratacionModel | undefined {
+        return this.fichas.find((f) => f.getCandidato() === candidato);
+    }
+
+    public tieneFicha(idCandidato: string): boolean {
+        const candidato = this.candidatos.obtenerPorId(idCandidato);
+        return candidato !== undefined && this.buscarFichaDe(candidato) !== undefined;
+    }
+
     public crearFicha(idCandidato: string, empleado: EmpleadoModel, cargo: string): FichaContratacionModel {
         const candidato = this.candidatos.obtenerPorId(idCandidato);
         if (candidato === undefined) {
             throw new Error("Candidato no registrado: " + idCandidato);
+        }
+        if (this.buscarFichaDe(candidato) !== undefined) {
+            throw new Error("El candidato " + idCandidato + " ya tiene una ficha de contratación");
         }
         const ficha = new FichaContratacionModel(this.fabricaEtapas.aplicado(), candidato, empleado, cargo);
         this.fichas.push(ficha);
