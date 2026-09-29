@@ -3,6 +3,10 @@ Ejercicio 2 de Arquitectura de Software
 
 Acá estamos haciendo una prueba!!!
 
+## Diagrama de clases
+
+[Ver diagrama en draw.io](https://app.diagrams.net/#G1gTAEDPHAaargxydij8XogiIP4ceJogK6#%7B%22pageId%22%3A%22QzuwK36c-xs2hn0z6Ssn%22%7D)
+
 ## Cómo ejecutarlo
 
 El programa corre en el navegador con una interfaz sencilla (botones y formularios).
