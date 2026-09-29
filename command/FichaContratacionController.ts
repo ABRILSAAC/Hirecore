@@ -3,6 +3,8 @@ import { FichaContratacionModel } from '../model/FichaContratacionModel.js';
 import { EventManager } from '../observer/EventManager.js';
 import { FichaContratacionPolicy } from '../policyObject/FichaContratacionPolicy.js';
 import { IEtapaState } from '../State/Interface/IEtapaState.js';
+import { GerenteContratacionStrategy } from '../Strategy/GerenteContratacionStrategy.js';
+import { RecursosHumanosEstrategia } from '../Strategy/RecursosHumanosEstrategia.js';
 import { AvanzarEtapaCommand } from './AvanzarEtapaCommand.js';
 import { RechazarEtapaCommand } from './RechazarEtapaCommand.js';
 
@@ -20,6 +22,18 @@ export class FichaContratacionController {
     }
 
     public deshacer(empleado: EmpleadoModel, ficha: FichaContratacionModel): boolean {
+        const rol = empleado.getRol();
+        
+        
+        if (!(rol instanceof GerenteContratacionStrategy || rol instanceof RecursosHumanosEstrategia)) {
+            throw new Error("Solo el Gerente y Recursos Humanos tienen permisos para deshacer cambios.");
+        }
+
+        const policy = this.crearPolitica(empleado, ficha);
+        if (!policy.puedeEscribir("Etapa")) {
+            throw new Error("El rol actual no tiene permisos para deshacer cambios de etapa.");
+        }
+        
         const etapaAntesDeDeshacer: IEtapaState = ficha.getEtapa();
         const deshecho: boolean = ficha.getHistorial().deshacerUltimo();
         

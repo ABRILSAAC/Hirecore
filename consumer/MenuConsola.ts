@@ -5,6 +5,8 @@ import { EmpleadoModel } from "../model/EmpleadoModel.js";
 import { CandidatoModel } from "../model/CandidatoModel.js";
 import { FichaContratacionModel } from "../model/FichaContratacionModel.js";
 import { IPermisosPolicy } from "../policyObject/IPermisosPolicy.js";
+import { GerenteContratacionStrategy } from "../Strategy/GerenteContratacionStrategy.js";
+import { RecursosHumanosEstrategia } from "../Strategy/RecursosHumanosEstrategia.js";
 
 const CAMPOS = ["Nombre", "Apellidos", "Email", "FechaNacimiento", "Profesion", "Etapa", "Cargo", "Candidato", "Reclutador"] as const;
 
@@ -135,34 +137,55 @@ export class MenuConsola {
     }
 
     private mostrarMenuPrincipal(): void {
-        const sesion = this.sesionActual();
+    const sesion = this.sesionActual();
         this.encabezado.textContent = sesion.tipo === "empleado"
             ? "Usuario: " + sesion.modelo.getNombreCompleto() + " (" + sesion.modelo.getCargo() + ")"
             : "Candidato: " + sesion.modelo.getNombreCompleto();
 
         this.menu.innerHTML = "";
-        const acciones: [string, () => void][] = sesion.tipo === "empleado"
-            ? [
-                ["Crear ficha", () => this.mostrarCrearFicha()],
-                ["Avanzar etapa", () => this.mostrarSeleccionFicha("Avanzar etapa", "Avanzar", (ficha) => this.ejecutar(() => {
+        
+        let acciones: [string, () => void][] = [];
+
+        if (sesion.tipo === "empleado") {
+            const empleado = sesion.modelo;
+            const rol = empleado.getRol();
+            
+            const puedeGestionarFichas = rol.escritura().has("Etapa");
+
+            const esGerenteOrHR = rol instanceof GerenteContratacionStrategy || rol instanceof RecursosHumanosEstrategia;
+
+            if (puedeGestionarFichas) {
+                // Acciones comunes para todos los que pueden gestionar etapas (Gerente, RRHH, Reclutador)
+                acciones.push(["Crear ficha", () => this.mostrarCrearFicha()]);
+                acciones.push(["Avanzar etapa", () => this.mostrarSeleccionFicha("Avanzar etapa", "Avanzar", (ficha) => this.ejecutar(() => {
                     this.consumer.avanzarEtapa(this.empleadoActual(), ficha);
                     this.log("Nueva etapa: " + ficha.getEtapa().nombre());
-                }))],
-                ["Rechazar candidato", () => this.mostrarSeleccionFicha("Rechazar candidato", "Rechazar", (ficha) => this.ejecutar(() => {
+                }))]);
+                acciones.push(["Rechazar candidato", () => this.mostrarSeleccionFicha("Rechazar candidato", "Rechazar", (ficha) => this.ejecutar(() => {
                     this.consumer.rechazarEtapa(this.empleadoActual(), ficha);
                     this.log("Nueva etapa: " + ficha.getEtapa().nombre());
-                }))],
-                ["Deshacer último cambio", () => this.mostrarSeleccionFicha("Deshacer último cambio", "Deshacer", (ficha) => this.ejecutar(() => {
-                    const deshecho = this.consumer.deshacer(this.empleadoActual(), ficha);
-                    this.log(deshecho ? "Último cambio deshecho" : "No hay cambios que deshacer");
-                }))],
-                ["Consultar permiso", () => this.mostrarConsultarPermiso()],
-                ["Ver auditoría", () => this.mostrarAuditoria()],
-                ["Cambiar de usuario", () => this.mostrarLogin()]
-            ]
-            : [
-                ["Cambiar de usuario", () => this.mostrarLogin()]
-            ];
+                }))]);
+
+                // 🔒 ACCIÓN EXCLUSIVA: Solo Gerente y RRHH pueden ver y ejecutar "Deshacer"
+                if (esGerenteOrHR) {
+                    acciones.push(["Deshacer último cambio", () => this.mostrarSeleccionFicha("Deshacer último cambio", "Deshacer", (ficha) => this.ejecutar(() => {
+                        const deshecho = this.consumer.deshacer(this.empleadoActual(), ficha);
+                        this.log(deshecho ? "Último cambio deshecho" : "No hay cambios que deshacer");
+                    }))]);
+                }
+
+                acciones.push(["Consultar permiso", () => this.mostrarConsultarPermiso()]);
+                acciones.push(["Ver auditoría", () => this.mostrarAuditoria()]);
+            } else {
+                // Acciones para roles de solo lectura (como Nómina)
+                acciones.push(["Ver auditoría", () => this.mostrarAuditoria()]);
+            }
+
+            acciones.push(["Cambiar de usuario", () => this.mostrarLogin()]);
+        } else {
+            acciones.push(["Cambiar de usuario", () => this.mostrarLogin()]);
+        }
+
         for (const [texto, accion] of acciones) {
             this.menu.append(crear("button", { texto, onClick: accion }));
         }

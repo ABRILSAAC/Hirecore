@@ -19,7 +19,7 @@ export class EstadoRechazado implements IEtapaState
     }
     permisosEscritura(): Set<string>
     {
-        return new Set();
+        return new Set<string>(["Etapa"]);
     }
     avanzar(): IEtapaState
     {
