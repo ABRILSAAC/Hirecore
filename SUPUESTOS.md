@@ -1,6 +1,6 @@
 # Supuestos
 
-Diagrama de referencia: [ver en draw.io](https://app.diagrams.net/#G1gTAEDPHAaargxydij8XogiIP4ceJogK6#%7B%22pageId%22%3A%22QzuwK36c-xs2hn0z6Ssn%22%7D)
+Diagrama de referencia: [ver en excalidraw.com](https://excalidraw.com/#room=b322a97cc39c97aa2647,ZT2RwciWuDNwue8sUspfJw)
 
 ## Supuestos generales
 
