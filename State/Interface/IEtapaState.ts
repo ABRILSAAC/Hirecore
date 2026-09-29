@@ -5,6 +5,6 @@ export interface IEtapaState
     permisosEscritura(): Set<string>
     avanzar(): IEtapaState
     rechazar(): IEtapaState
-    encargado(): string
+    encargado(): string[]
 
 }

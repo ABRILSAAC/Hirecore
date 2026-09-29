@@ -20,10 +20,25 @@ export class EmailNotificationListener implements IEventListener {
     ) {}
 
     public update(evento: string, ficha: FichaContratacionModel, actor: EmpleadoModel, etapaAnterior: IEtapaState): void {
-        const cargoEncargado = ficha.getEtapa().encargado();
-        const destinatarios = this.empleados.porCargo(cargoEncargado);
+        const destinatariosUnicos = new Map<string, EmpleadoModel>();
 
-        for (const destinatario of destinatarios) {
+        const cargoEncargado = ficha.getEtapa().encargado();
+
+        const cargosAProcesar = Array.isArray(cargoEncargado) ? cargoEncargado : [cargoEncargado];
+
+        for (const cargo of cargosAProcesar) {
+            const encontrados = this.empleados.porCargo(cargo);
+            for (const emp of encontrados) {
+                destinatariosUnicos.set(emp.getEmail(), emp);
+            }
+        }
+
+        const reclutadorFicha = ficha.getReclutador(); 
+        if (reclutadorFicha) {
+            destinatariosUnicos.set(reclutadorFicha.getEmail(), reclutadorFicha);
+        }
+
+        for (const destinatario of destinatariosUnicos.values()) {
             this.salida(
                 `[EMAIL a ${destinatario.getEmail()}] ${evento}:${ficha.getCandidato().getNombreCompleto()} ` +
                 `${etapaAnterior.nombre()} ->${ficha.getEtapa().nombre()} ` +

@@ -28,8 +28,8 @@ export class EstadoContratado implements IEtapaState
        {
            return this.fabrica.rechazado();
        }
-       encargado(): string
+       encargado(): string[]
        {
-           return "Nomina";
+           return ["Reclutador", "Recursos Humanos","Nomina", "Gerente de Contratación"];
        }
 }

@@ -28,8 +28,8 @@ export class EstadoPruebaTecnica implements IEtapaState
     {
         return this.fabrica.rechazado();
     }
-    encargado(): string
+    encargado(): string[]
     {
-        return "Recursos Humanos";
+        return ["Reclutador", "Recursos Humanos"];
     }
 }
