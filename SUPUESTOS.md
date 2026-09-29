@@ -35,8 +35,8 @@ RRHH insinuó que el alcance de deshacer podría crecer más allá de la última
 
 La conversación dejó esto deliberadamente vago ("cuando ya hay algo concreto que decidir"). Lo que asumimos:
 
-- Cada etapa tiene un cargo "encargado" (`IEtapaState.encargado()`). Para las etapas de proceso (Aplicado, Entrevista, Prueba Técnica) el encargado es el Reclutador; para las etapas donde ya hay una decisión con peso (Oferta, Rechazado) el encargado es Recursos Humanos o el Gerente de Contratación.
-- Concretamente, **Oferta** es la etapa asignada al Gerente de Contratación: es el punto donde avanzar significa "contratar" y rechazar significa "no contratar" — ahí sí hay algo concreto que decidir.
+- Cada etapa tiene un envio de cargo "encargado" (`IEtapaState.encargado()`),  tanto recursos humanos, como el reclutador, el envio de correo empieza desde las etapas de proceso (Aplicado, Entrevista, Prueba Técnica); para las etapas donde ya hay una decisión con peso (Oferta) el envio encargado es  para Reclutador , Recursos Humanos y el Gerente de Contratación.
+
 - En las etapas intermedias (Aplicado, Entrevista, Prueba Técnica, Validación de Referencias) el gerente **no** recibe notificación, para no saturarlo con pasos de proceso que no requieren su decisión.
 
 ### Diseño pensando en un proceso todavía en definición
