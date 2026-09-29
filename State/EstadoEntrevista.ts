@@ -29,4 +29,8 @@ export class EstadoEntrevista implements IEtapaState
     {
         return this.fabrica.rechazado();
     }
+    encargado(): string
+    {
+        return "Reclutador";
+    }
 }

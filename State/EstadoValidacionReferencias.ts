@@ -28,4 +28,8 @@ export class EstadoValidacionReferencias implements IEtapaState
     {
         return this.fabrica.rechazado();
     }
+    encargado(): string
+    {
+        return "Recursos Humanos";
+    }
 }

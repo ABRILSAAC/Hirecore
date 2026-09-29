@@ -25,10 +25,13 @@ export class Consumer {
     private readonly auditoria: AuditoriaListener = new AuditoriaListener();
     private readonly eventos: EventManager;
 
+    private observadorNotificaciones: ((mensaje: string) => void) | undefined;
+
     public constructor() {
         this.eventos = new EventManager();
-        this.eventos.subscribe("ETAPA_AVANZADA", new EmailNotificationListener("rrhh@hirecore.com"));
-        this.eventos.subscribe("CANDIDATO_RECHAZADO", new EmailNotificationListener("rrhh@hirecore.com"));
+        const avisoAlEncargado = new EmailNotificationListener(this.empleados, (mensaje) => this.observadorNotificaciones?.(mensaje));
+        this.eventos.subscribe("ETAPA_AVANZADA", avisoAlEncargado);
+        this.eventos.subscribe("CANDIDATO_RECHAZADO", avisoAlEncargado);
         this.eventos.subscribe("ETAPA_AVANZADA", this.auditoria);
         this.eventos.subscribe("CANDIDATO_RECHAZADO", this.auditoria);
         this.eventos.subscribe("CAMBIO_DESHECHO", this.auditoria);
@@ -48,6 +51,10 @@ export class Consumer {
 
     public iniciar(): void {
         new MenuConsola(this).iniciar();
+    }
+
+    public alNotificar(callback: (mensaje: string) => void): void {
+        this.observadorNotificaciones = callback;
     }
 
     // Consultas

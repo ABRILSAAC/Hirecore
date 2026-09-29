@@ -14,4 +14,8 @@ export class EmpleadorSelector {
     public ids(): Set<string> {
         return new Set(this.empleados.keys());
     }
+
+    public porCargo(cargo: string): EmpleadoModel[] {
+        return [...this.empleados.values()].filter((empleado) => empleado.getCargo() === cargo);
+    }
 }

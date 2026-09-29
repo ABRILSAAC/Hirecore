@@ -28,4 +28,8 @@ export class EstadoAplicado implements IEtapaState
     {
         return this.fabrica.rechazado();
     }
+    encargado(): string
+    {
+        return "Reclutador";
+    }
 }

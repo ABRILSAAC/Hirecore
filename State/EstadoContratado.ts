@@ -28,4 +28,8 @@ export class EstadoContratado implements IEtapaState
        {
            return this.fabrica.rechazado();
        }
+       encargado(): string
+       {
+           return "Nomina";
+       }
 }

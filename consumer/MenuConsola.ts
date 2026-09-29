@@ -43,6 +43,8 @@ export class MenuConsola {
         this.listado = crear("section", { clase: "listado" });
         this.registro = crear("pre", { clase: "registro" });
         raiz.append(crear("h1", { texto: "HireCore" }), this.encabezado, this.menu, this.panel, this.listado, this.registro);
+
+        this.consumer.alNotificar((mensaje) => this.log(mensaje));
     }
 
     public iniciar(): void {
