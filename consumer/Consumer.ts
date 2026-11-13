@@ -1,4 +1,4 @@
-import { EmpleadorSelector } from "../factory/EmpleadorSelector.js";
+import { EmpleadoSelector } from "../factory/EmpleadoSelector.js";
 import { CandidatoSelector } from "../factory/CandidatoSelector.js";
 import { EtapaFactoryConcreta } from "../factory/EtapaFactoryConcreta.js";
 import { FichaContratacionController } from "../command/FichaContratacionController.js";
@@ -16,7 +16,7 @@ import { FichaContratacionPolicy } from "../policyObject/FichaContratacionPolicy
 import { MenuConsola } from "./MenuConsola.js";
 
 export class Consumer {
-    private readonly empleados: EmpleadorSelector = new EmpleadorSelector();
+    private readonly empleados: EmpleadoSelector = new EmpleadoSelector();
     private readonly candidatos: CandidatoSelector = new CandidatoSelector();
     private readonly fabricaEtapas: EtapaFactoryConcreta = new EtapaFactoryConcreta();
     private readonly fichas: FichaContratacionModel[] = [];

@@ -3,7 +3,7 @@ import { EmpleadoModel } from '../model/EmpleadoModel.js';
 import { FichaContratacionModel } from '../model/FichaContratacionModel.js';
 import { IEtapaState } from '../State/Interface/IEtapaState.js';
 import { IEventListener } from './IEventListener.js';
-import { EmpleadorSelector } from '../factory/EmpleadorSelector.js';
+import { EmpleadoSelector } from '../factory/EmpleadoSelector.js';
 
 // En vez de un correo fijo, el destinatario se resuelve en cada evento: es quien tenga
 // el cargo encargado de la etapa en la que quedó la ficha (ficha.getEtapa() ya es la etapa
@@ -15,7 +15,7 @@ import { EmpleadorSelector } from '../factory/EmpleadorSelector.js';
 // con el panel de notificaciones de la página).
 export class EmailNotificationListener implements IEventListener {
     constructor(
-        private readonly empleados: EmpleadorSelector,
+        private readonly empleados: EmpleadoSelector,
         private readonly salida: (mensaje: string) => void
     ) {}
 

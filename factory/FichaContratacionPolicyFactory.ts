@@ -3,16 +3,16 @@ import { IPermisosPolicy } from "../policyObject/IPermisosPolicy.js";
 import { FichaContratacionPolicy } from "../policyObject/FichaContratacionPolicy.js";
 import { CandidatoPolicy } from "../policyObject/CandidatoPolicy.js";
 import { FichaContratacionModel } from "../model/FichaContratacionModel.js";
-import { EmpleadorSelector } from "./EmpleadorSelector.js";
+import { EmpleadoSelector } from "./EmpleadoSelector.js";
 import { CandidatoSelector } from "./CandidatoSelector.js";
 import { EventManager } from "../observer/EventManager.js";
 
 export class FichaContratacionPolicyFactory implements IFichaContratacionPolicyFactory {
-    private readonly empleados: EmpleadorSelector;
+    private readonly empleados: EmpleadoSelector;
     private readonly candidatos: CandidatoSelector;
     private readonly eventManager: EventManager;
 
-    public constructor(empleados: EmpleadorSelector, candidatos: CandidatoSelector, eventManager: EventManager) {
+    public constructor(empleados: EmpleadoSelector, candidatos: CandidatoSelector, eventManager: EventManager) {
         this.empleados = empleados;
         this.candidatos = candidatos;
         this.eventManager = eventManager;

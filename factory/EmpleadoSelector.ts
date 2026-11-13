@@ -1,6 +1,6 @@
 import { EmpleadoModel } from "../model/EmpleadoModel.js";
 
-export class EmpleadorSelector {
+export class EmpleadoSelector {
     private readonly empleados: Map<string, EmpleadoModel> = new Map<string, EmpleadoModel>();
 
     public registrar(id: string, empleado: EmpleadoModel): void {
